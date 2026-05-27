@@ -8,12 +8,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Harkirat Singh — Computer Engineering student at Thapar Institute building AI-powered, full-stack products.",
+          "Portfolio of Harkirat Singh — Computer Engineering student at Thapar Institute crafting AI-powered, full-stack products with obsessive detail.",
       },
       { property: "og:title", content: "Harkirat Singh — Portfolio" },
       {
         property: "og:description",
-        content: "Full-stack & AI engineer crafting intelligent products.",
+        content: "Full-stack & AI engineer architecting intelligent, human-first products.",
       },
     ],
   }),
@@ -24,36 +24,45 @@ const projects = [
   {
     n: "01",
     title: "FinGuard AI",
-    tag: "AI-Powered Financial Health Scoring",
+    tag: "Cognitive Financial Wellness Engine",
+    blurb:
+      "An autonomous financial co-pilot that reads your spending like a story — surfacing the plot twists before they hit your wallet.",
     stack: ["Python", "React", "FastAPI", "MongoDB", "Scikit-learn", "NLP"],
+    href: "#",
     points: [
-      "AI analytics platform for expense tracking, budget monitoring & financial health scoring.",
-      "Interactive dashboards with real-time spending insights and personalized recommendations.",
-      "Secure REST APIs with JWT auth and scalable MongoDB architecture.",
-      "Logistic Regression + TF-IDF model for automated NLP-based expense categorization.",
+      "Conversational dashboards translating raw transactions into living, breathing insights.",
+      "Bespoke financial health scoring blending behavioural signals with bank-grade analytics.",
+      "Hardened FastAPI core with JWT, role isolation, and an elastic MongoDB spine.",
+      "Custom Logistic Regression + TF-IDF pipeline that learns the dialect of your expenses.",
     ],
   },
   {
     n: "02",
     title: "Stock Wise AI",
-    tag: "Inventory & B2B Retail Management",
+    tag: "Predictive Commerce Operating System",
+    blurb:
+      "A nerve-system for modern retail — forecasting demand, choreographing inventory, and turning shelves into intelligent surfaces.",
     stack: ["React", "Node.js", "MongoDB", "Python", "Scikit-learn"],
+    href: "#",
     points: [
-      "Full-stack MERN app with JWT role-auth for shopkeeper, customer & admin panels.",
-      "Random Forest demand forecasting on sales history to predict weekly restocking.",
-      "Real-time inventory tracking, low-stock alerts, QR-based billing & auto invoicing.",
+      "Tri-persona MERN console for shopkeepers, customers and admins, woven together by JWT.",
+      "Random Forest forecasting that anticipates restocks before the shelves whisper.",
+      "Live inventory pulse, low-stock alarms, QR-native billing and zero-touch invoicing.",
     ],
   },
   {
     n: "03",
     title: "MediPredict AI",
-    tag: "ML-Based Symptom Intelligence System",
+    tag: "Clinical Symptom Intelligence",
+    blurb:
+      "A second opinion at the speed of curiosity — diagnostics with calibrated confidence, served through a calm, clinical interface.",
     stack: ["React", "Flask", "MongoDB", "Python", "Scikit-learn"],
+    href: "#",
     points: [
-      "Decision Tree + Random Forest models to predict diseases with confidence scores.",
-      "Flask REST API returning predictions, severity levels, and precautions in real time.",
-      "Pandas/NumPy ML pipeline for preprocessing on symptom-disease mapping.",
-      "Patient history and prediction logs stored in MongoDB with React dashboard.",
+      "Ensembled Decision Tree + Random Forest verdicts paired with probabilistic certainty.",
+      "Flask micro-API streaming predictions, severity and precautions in real time.",
+      "Pandas/NumPy pipeline mapping the messy grammar of symptoms to disease taxonomies.",
+      "Longitudinal patient logs surfaced through an elegant React command center.",
     ],
   },
 ];
@@ -106,48 +115,78 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative pt-40 pb-32 px-6">
+      <section id="top" className="relative pt-40 pb-24 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground mb-10">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-            Available for internships · Patiala, IN · {time} IST
+            Open to internships · Patiala, IN · {time} IST
           </div>
 
-          <h1 className="font-serif text-[14vw] md:text-[10rem] leading-[0.9] tracking-tight text-balance">
-            Harkirat
-            <br />
-            <span className="italic text-muted-foreground">Singh.</span>
-          </h1>
+          <div className="grid md:grid-cols-12 gap-10 items-end">
+            <div className="md:col-span-8">
+              <h1 className="font-serif text-[14vw] md:text-[9.5rem] leading-[0.88] tracking-tight text-balance">
+                Harkirat
+                <br />
+                <span className="italic text-muted-foreground">Singh.</span>
+              </h1>
+            </div>
 
-          <div className="mt-12 grid md:grid-cols-12 gap-8 items-end">
+            {/* Portrait placeholder — upload later */}
+            <div className="md:col-span-4">
+              <div className="relative aspect-[4/5] w-full border border-border rounded-md overflow-hidden bg-card/40 group">
+                {/*
+                  TODO: Replace the placeholder block below with your portrait.
+                  Example: <img src="/your-photo.jpg" alt="Harkirat Singh" className="absolute inset-0 w-full h-full object-cover" />
+                */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.18),transparent_60%)]" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground">
+                  <div className="h-14 w-14 rounded-full border border-dashed border-border flex items-center justify-center text-2xl font-serif italic">HS</div>
+                  <div className="text-[10px] font-mono uppercase tracking-[0.3em]">Portrait — coming soon</div>
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                  <span>· est. 2005</span>
+                  <span>frame_01</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-7 text-xl md:text-2xl font-serif leading-snug text-balance">
-              Computer Engineering student at{" "}
-              <span className="text-accent">Thapar Institute</span>, building
-              AI-powered, full-stack products that turn messy data into
-              decisions.
+              A second-year engineer at{" "}
+              <span className="text-accent">Thapar Institute</span>, devoted
+              to the quiet craft of turning unruly data into{" "}
+              <span className="italic">decisions worth trusting</span> — one
+              well-pondered interface at a time.
             </p>
             <div className="md:col-span-5 md:text-right text-sm text-muted-foreground font-mono space-y-1">
               <div>B.E. Computer Engineering</div>
               <div>2023 — 2027</div>
-              <div>250+ DSA problems solved</div>
+              <div>250+ algorithms wrangled</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Marquee strip */}
-      <section className="border-y border-border py-6 overflow-hidden bg-muted/30">
-        <div className="flex gap-12 whitespace-nowrap font-serif text-2xl md:text-3xl italic text-muted-foreground animate-[marquee_40s_linear_infinite]">
+      {/* Marquee strip — fancy edition */}
+      <section className="border-y border-border py-8 overflow-hidden bg-muted/30 relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="flex gap-12 whitespace-nowrap font-serif text-2xl md:text-4xl italic text-muted-foreground animate-[marquee_45s_linear_infinite]">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex gap-12 items-center">
-              <span>Full-stack engineering</span>
-              <span className="text-accent">✦</span>
-              <span>Applied machine learning</span>
-              <span className="text-accent">✦</span>
-              <span>Product-minded</span>
-              <span className="text-accent">✦</span>
-              <span>MERN · Python · FastAPI</span>
-              <span className="text-accent">✦</span>
+              <span>Architecting intelligent systems</span>
+              <span className="text-accent not-italic">✦</span>
+              <span className="text-foreground">Designing with intent</span>
+              <span className="text-accent not-italic">◆</span>
+              <span>Engineering with elegance</span>
+              <span className="text-accent not-italic">✦</span>
+              <span className="text-foreground">Shipping with conviction</span>
+              <span className="text-accent not-italic">❋</span>
+              <span>Where machine learning meets human craft</span>
+              <span className="text-accent not-italic">◆</span>
+              <span className="text-foreground">Pixels, predictions, poetry</span>
+              <span className="text-accent not-italic">✦</span>
             </span>
           ))}
         </div>
@@ -164,14 +203,15 @@ function Index() {
           </div>
           <div className="md:col-span-8 space-y-6 font-serif text-2xl md:text-3xl leading-tight text-balance">
             <p>
-              I'm a second-year engineer drawn to the seam where{" "}
+              I live at the seam where{" "}
               <span className="italic text-accent">machine learning</span> meets
-              real product surfaces — predictions you can actually act on,
-              dashboards that respect the user.
+              the surfaces real people touch — predictions worth acting on,
+              interfaces that respect the human on the other side.
             </p>
             <p className="text-muted-foreground text-xl md:text-2xl">
-              Currently leading content for Hostel O and serving as Joint
-              Secretary at the IETE Students Forum at TIET Patiala.
+              Off the keyboard, I shape narrative as Creative Content Head at
+              Hostel O and serve as Joint Secretary of the IETE Students Forum,
+              TIET Patiala.
             </p>
           </div>
         </div>
@@ -186,49 +226,96 @@ function Index() {
                 (02) Selected Work
               </div>
               <h2 className="font-serif text-5xl md:text-7xl tracking-tight">
-                Things I've <span className="italic">built</span>.
+                Things I've <span className="italic">conjured</span>.
               </h2>
+              <p className="mt-5 max-w-xl text-muted-foreground text-lg font-serif italic">
+                A small catalogue of obsessions — each one shipped, sharpened,
+                and built to outlive its prototype.
+              </p>
             </div>
             <div className="hidden md:block text-sm font-mono text-muted-foreground">
-              {projects.length.toString().padStart(2, "0")} projects
+              {projects.length.toString().padStart(2, "0")} chapters
             </div>
           </div>
 
-          <div className="space-y-px">
-            {projects.map((p) => (
-              <article
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.map((p, idx) => (
+              <a
                 key={p.n}
-                className="group relative border-t border-border py-10 hover:bg-card/60 transition-colors px-2 -mx-2 rounded-sm"
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`group relative block border border-border rounded-lg p-8 bg-card/30 hover:bg-card hover:border-accent/60 transition-all duration-500 overflow-hidden ${
+                  idx === 0 ? "md:col-span-2" : ""
+                }`}
               >
-                <div className="grid md:grid-cols-12 gap-6">
-                  <div className="md:col-span-1 font-mono text-sm text-muted-foreground pt-2">
-                    {p.n}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative flex items-start justify-between gap-6">
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-mono text-xs text-muted-foreground">{p.n}</span>
+                    <div>
+                      <h3 className="font-serif text-3xl md:text-5xl tracking-tight group-hover:text-accent transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground italic font-serif">
+                        {p.tag}
+                      </p>
+                    </div>
                   </div>
-                  <div className="md:col-span-4">
-                    <h3 className="font-serif text-3xl md:text-4xl tracking-tight group-hover:text-accent transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground italic font-serif">
-                      {p.tag}
-                    </p>
+                  <span
+                    aria-hidden
+                    className="shrink-0 h-10 w-10 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:border-accent group-hover:text-accent group-hover:rotate-45 transition-all duration-500"
+                  >
+                    ↗
+                  </span>
+                </div>
+
+                {/* Visual placeholder for project imagery */}
+                <div className="relative mt-8 aspect-[16/9] w-full rounded-md border border-border/60 overflow-hidden bg-background">
+                  {/*
+                    TODO: Replace this placeholder with the project's screenshot or cover image.
+                    Example: <img src="/finguard-cover.jpg" alt="FinGuard AI preview" className="absolute inset-0 w-full h-full object-cover" />
+                  */}
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--accent)/0.18),transparent_50%)]" />
+                  <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--accent)/0.35),transparent_55%)]" />
+                  <div className="absolute inset-0 flex items-center justify-center text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
+                    Cover · {p.title} — upload pending
                   </div>
-                  <div className="md:col-span-5 space-y-2 text-muted-foreground text-[15px] leading-relaxed">
+                </div>
+
+                <p className="relative mt-6 font-serif text-lg md:text-xl text-foreground/90 leading-snug text-balance">
+                  {p.blurb}
+                </p>
+
+                <div className="relative mt-6 grid md:grid-cols-5 gap-6">
+                  <ul className="md:col-span-3 space-y-2 text-muted-foreground text-[15px] leading-relaxed">
                     {p.points.map((pt, i) => (
-                      <p key={i} className="text-balance">— {pt}</p>
+                      <li key={i} className="text-balance flex gap-3">
+                        <span className="text-accent mt-1.5 h-1 w-3 shrink-0 bg-current rounded-full" />
+                        <span>{pt}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                   <div className="md:col-span-2 flex flex-wrap gap-1.5 content-start">
                     {p.stack.map((s) => (
                       <span
                         key={s}
-                        className="text-[10px] font-mono uppercase tracking-wider border border-border px-2 py-0.5 rounded-full text-muted-foreground"
+                        className="text-[10px] font-mono uppercase tracking-wider border border-border px-2 py-0.5 rounded-full text-muted-foreground group-hover:border-accent/40 transition-colors"
                       >
                         {s}
                       </span>
                     ))}
                   </div>
                 </div>
-              </article>
+
+                <div className="relative mt-8 flex items-center justify-between text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">
+                  <span>Case study</span>
+                  <span className="group-hover:text-accent transition-colors">
+                    Visit project →
+                  </span>
+                </div>
+              </a>
             ))}
           </div>
         </div>
@@ -240,9 +327,12 @@ function Index() {
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground mb-4">
             (03) Toolkit
           </div>
-          <h2 className="font-serif text-5xl md:text-7xl tracking-tight mb-16">
-            How I <span className="italic">make</span>.
+          <h2 className="font-serif text-5xl md:text-7xl tracking-tight mb-4">
+            The <span className="italic">instruments</span> I play.
           </h2>
+          <p className="text-muted-foreground text-lg font-serif italic mb-16 max-w-xl">
+            A small, sharp arsenal — chosen for fluency, not fashion.
+          </p>
 
           <div className="grid md:grid-cols-2 gap-px bg-border">
             {skills.map((group) => (
@@ -283,7 +373,7 @@ function Index() {
             <div className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground mb-4">
               (04) Education
             </div>
-            <h2 className="font-serif text-4xl md:text-5xl mb-10">Studied at.</h2>
+            <h2 className="font-serif text-4xl md:text-5xl mb-10">Where I sharpened the blade.</h2>
             <div className="space-y-8">
               {[
                 {
@@ -320,7 +410,7 @@ function Index() {
             <div className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground mb-4">
               (05) Leadership
             </div>
-            <h2 className="font-serif text-4xl md:text-5xl mb-10">Beyond code.</h2>
+            <h2 className="font-serif text-4xl md:text-5xl mb-10">Life beyond the compiler.</h2>
             <div className="space-y-8">
               <div className="border-t border-border pt-4">
                 <div className="flex justify-between items-baseline gap-4">
@@ -328,7 +418,7 @@ function Index() {
                   <span className="font-mono text-xs text-muted-foreground shrink-0">'25 — '26</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Coordinated 10+ tech events and workshops, growing club membership by 40%.
+                  Choreographed 10+ tech rituals and workshops, swelling the community by 40%.
                 </p>
               </div>
               <div className="border-t border-border pt-4">
@@ -337,16 +427,16 @@ function Index() {
                   <span className="font-mono text-xs text-muted-foreground shrink-0">'24 — now</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Led content strategy and digital campaigns through data-driven social planning.
+                  Authored the visual voice of a thousand-strong residence through data-led storytelling.
                 </p>
               </div>
               <div className="border-t border-border pt-4">
                 <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="font-serif text-xl">Event Organizer</h3>
+                  <h3 className="font-serif text-xl">Event Conductor</h3>
                   <span className="font-mono text-xs text-muted-foreground shrink-0">450+ ppl</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Executed events for 450+ participants, leading a team of 27.
+                  Orchestrated experiences for 450+ attendees, commanding a crew of 27.
                 </p>
               </div>
             </div>
@@ -363,8 +453,11 @@ function Index() {
           </div>
           <h2 className="font-serif text-6xl md:text-9xl tracking-tight leading-[0.95] text-balance">
             Let's build <br />
-            <span className="italic text-accent">something good</span>.
+            <span className="italic text-accent">something unforgettable</span>.
           </h2>
+          <p className="mt-8 max-w-xl text-muted-foreground text-lg font-serif italic">
+            Internships, collaborations, or a quiet conversation about ideas worth chasing — my inbox is always open.
+          </p>
 
           <div className="mt-16 grid md:grid-cols-2 gap-8">
             <a
@@ -387,7 +480,7 @@ function Index() {
 
       <footer className="border-t border-border px-6 py-8">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row justify-between gap-4 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-          <div>© {new Date().getFullYear()} Harkirat Singh</div>
+          <div>© {new Date().getFullYear()} Harkirat Singh · Crafted with intent</div>
           <div className="flex gap-6">
             <a href="https://github.com" className="hover:text-accent">GitHub</a>
             <a href="https://linkedin.com" className="hover:text-accent">LinkedIn</a>
