@@ -192,8 +192,35 @@ function Reveal({
   );
 }
 
+const navLinks = [
+  { id: "work", label: "Work" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "achievements", label: "Achievements" },
+  { id: "contact", label: "Contact" },
+];
+
+function useCountUp(target: number, inView: boolean, duration = 1400) {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, inView, duration]);
+  return n;
+}
+
 function Index() {
   const [time, setTime] = useState("");
+  const [active, setActive] = useState<string>("top");
   useEffect(() => {
     const tick = () =>
       setTime(
@@ -214,6 +241,24 @@ function Index() {
       document.documentElement.style.scrollBehavior = "";
     };
   }, []);
+
+  useEffect(() => {
+    const ids = ["top", ...navLinks.map((l) => l.id)];
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, []);
+
 
   return (
     <main className="min-h-screen noise relative overflow-x-hidden">
