@@ -332,9 +332,10 @@ function Index() {
               >
                 Harkirat
                 <br />
-                <span className="italic text-muted-foreground">Singh.</span>
+                <span className="italic text-gradient animate-gradient">Singh.</span>
               </motion.h1>
             </div>
+
 
             {/* Portrait placeholder */}
             <motion.div
