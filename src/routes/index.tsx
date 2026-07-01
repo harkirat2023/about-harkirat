@@ -566,7 +566,7 @@ function Index() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                  className="group relative h-full flex flex-col border border-border rounded-xl p-8 bg-card/30 backdrop-blur-sm hover:bg-card hover:border-accent/60 transition-all duration-500 overflow-hidden"
+                  className="group relative h-full flex flex-col rounded-2xl p-8 glass gradient-border shine hover:bg-card transition-all duration-500 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -670,7 +670,7 @@ function Index() {
                 <Reveal key={group.label} delay={gi * 0.05}>
                   <motion.div
                     whileHover={{ y: -3 }}
-                    className="h-full rounded-xl border border-border bg-background/60 backdrop-blur-sm p-6 hover:border-accent/60 transition"
+                    className="h-full rounded-2xl glass gradient-border p-6 hover:border-accent/60 transition"
                   >
                     <div className="flex items-center justify-between mb-5">
                       <div className="flex items-center gap-3">
@@ -732,7 +732,7 @@ function Index() {
                 <Reveal key={a.title} delay={i * 0.08}>
                   <motion.div
                     whileHover={{ y: -3 }}
-                    className="h-full rounded-xl border border-border bg-card/30 backdrop-blur-sm p-8 hover:border-accent/60 transition"
+                    className="h-full rounded-2xl glass gradient-border shine p-8 hover:border-accent/60 transition"
                   >
                     <div className="h-12 w-12 rounded-lg border border-border flex items-center justify-center text-accent mb-5">
                       <Icon className="h-6 w-6" />
@@ -821,7 +821,7 @@ function Index() {
             <Reveal>
               <a
                 href="mailto:hkkirat25@gmail.com"
-                className="group flex items-center justify-between gap-6 rounded-xl border border-border bg-card/40 backdrop-blur-sm p-8 hover:border-accent hover:bg-card transition"
+                className="group flex items-center justify-between gap-6 rounded-2xl glass gradient-border p-8 hover:bg-card transition"
               >
                 <div>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2 inline-flex items-center gap-2">
@@ -835,7 +835,7 @@ function Index() {
             <Reveal delay={0.08}>
               <a
                 href="tel:+918847654698"
-                className="group flex items-center justify-between gap-6 rounded-xl border border-border bg-card/40 backdrop-blur-sm p-8 hover:border-accent hover:bg-card transition"
+                className="group flex items-center justify-between gap-6 rounded-2xl glass gradient-border p-8 hover:bg-card transition"
               >
                 <div>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2 inline-flex items-center gap-2">
