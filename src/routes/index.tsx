@@ -414,8 +414,31 @@ function Index() {
               <Linkedin className="h-4 w-4" /> LinkedIn
             </a>
           </motion.div>
+
+          {/* Hero stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.65 }}
+            className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden glass"
+          >
+            {[
+              { k: "250+", v: "DSA Problems" },
+              { k: "03", v: "Shipped Projects" },
+              { k: "450+", v: "Event Reach" },
+              { k: "10+", v: "Tech Events Led" },
+            ].map((s) => (
+              <div key={s.v} className="p-6 bg-card/40 hover:bg-card/70 transition">
+                <div className="font-serif text-4xl md:text-5xl text-gradient">{s.k}</div>
+                <div className="mt-1 text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+                  {s.v}
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
+
 
       {/* Marquee strip */}
       <section className="border-y border-border py-8 overflow-hidden bg-muted/20 relative">
