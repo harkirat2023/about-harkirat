@@ -192,8 +192,20 @@ function Reveal({
   );
 }
 
+const navLinks = [
+  { id: "work", label: "Work" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "achievements", label: "Achievements" },
+  { id: "contact", label: "Contact" },
+];
+
+
+
+
 function Index() {
   const [time, setTime] = useState("");
+  const [active, setActive] = useState<string>("top");
   useEffect(() => {
     const tick = () =>
       setTime(
@@ -215,6 +227,24 @@ function Index() {
     };
   }, []);
 
+  useEffect(() => {
+    const ids = ["top", ...navLinks.map((l) => l.id)];
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, []);
+
+
   return (
     <main className="min-h-screen noise relative overflow-x-hidden">
       {/* Ambient gradient orbs */}
@@ -225,26 +255,40 @@ function Index() {
       </div>
 
       {/* Nav */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/50 border-b border-border/40">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/40">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           <a href="#top" className="font-serif text-xl tracking-tight">
             Harkirat<span className="text-accent">.</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#work" className="hover:text-foreground transition">Work</a>
-            <a href="#about" className="hover:text-foreground transition">About</a>
-            <a href="#skills" className="hover:text-foreground transition">Skills</a>
-            <a href="#achievements" className="hover:text-foreground transition">Achievements</a>
-            <a href="#contact" className="hover:text-foreground transition">Contact</a>
+          <nav className="hidden md:flex items-center gap-1 text-sm text-muted-foreground glass rounded-full px-2 py-1.5">
+            {navLinks.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                className={`relative px-3 py-1.5 rounded-full transition-colors ${
+                  active === l.id ? "text-foreground" : "hover:text-foreground"
+                }`}
+              >
+                {active === l.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-accent/15 border border-accent/30"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="relative">{l.label}</span>
+              </a>
+            ))}
           </nav>
           <a
             href="mailto:hkkirat25@gmail.com"
-            className="text-xs font-mono uppercase tracking-widest border border-border px-3 py-1.5 rounded-full hover:bg-accent hover:text-background hover:border-accent transition"
+            className="relative text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full gradient-border bg-card/40 hover:bg-accent hover:text-background transition-colors"
           >
-            Let's talk
+            <span className="relative z-10">Let's talk</span>
           </a>
         </div>
       </header>
+
 
       {/* Hero */}
       <section id="top" className="relative pt-40 pb-24 px-6">
@@ -273,9 +317,10 @@ function Index() {
               >
                 Harkirat
                 <br />
-                <span className="italic text-muted-foreground">Singh.</span>
+                <span className="italic text-gradient animate-gradient">Singh.</span>
               </motion.h1>
             </div>
+
 
             {/* Portrait placeholder */}
             <motion.div
@@ -354,8 +399,31 @@ function Index() {
               <Linkedin className="h-4 w-4" /> LinkedIn
             </a>
           </motion.div>
+
+          {/* Hero stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.65 }}
+            className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden glass"
+          >
+            {[
+              { k: "250+", v: "DSA Problems" },
+              { k: "03", v: "Shipped Projects" },
+              { k: "450+", v: "Event Reach" },
+              { k: "10+", v: "Tech Events Led" },
+            ].map((s) => (
+              <div key={s.v} className="p-6 bg-card/40 hover:bg-card/70 transition">
+                <div className="font-serif text-4xl md:text-5xl text-gradient">{s.k}</div>
+                <div className="mt-1 text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+                  {s.v}
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
+
 
       {/* Marquee strip */}
       <section className="border-y border-border py-8 overflow-hidden bg-muted/20 relative">
@@ -483,7 +551,7 @@ function Index() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                  className="group relative h-full flex flex-col border border-border rounded-xl p-8 bg-card/30 backdrop-blur-sm hover:bg-card hover:border-accent/60 transition-all duration-500 overflow-hidden"
+                  className="group relative h-full flex flex-col rounded-2xl p-8 glass gradient-border shine hover:bg-card transition-all duration-500 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -587,7 +655,7 @@ function Index() {
                 <Reveal key={group.label} delay={gi * 0.05}>
                   <motion.div
                     whileHover={{ y: -3 }}
-                    className="h-full rounded-xl border border-border bg-background/60 backdrop-blur-sm p-6 hover:border-accent/60 transition"
+                    className="h-full rounded-2xl glass gradient-border p-6 hover:border-accent/60 transition"
                   >
                     <div className="flex items-center justify-between mb-5">
                       <div className="flex items-center gap-3">
@@ -649,7 +717,7 @@ function Index() {
                 <Reveal key={a.title} delay={i * 0.08}>
                   <motion.div
                     whileHover={{ y: -3 }}
-                    className="h-full rounded-xl border border-border bg-card/30 backdrop-blur-sm p-8 hover:border-accent/60 transition"
+                    className="h-full rounded-2xl glass gradient-border shine p-8 hover:border-accent/60 transition"
                   >
                     <div className="h-12 w-12 rounded-lg border border-border flex items-center justify-center text-accent mb-5">
                       <Icon className="h-6 w-6" />
@@ -738,7 +806,7 @@ function Index() {
             <Reveal>
               <a
                 href="mailto:hkkirat25@gmail.com"
-                className="group flex items-center justify-between gap-6 rounded-xl border border-border bg-card/40 backdrop-blur-sm p-8 hover:border-accent hover:bg-card transition"
+                className="group flex items-center justify-between gap-6 rounded-2xl glass gradient-border p-8 hover:bg-card transition"
               >
                 <div>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2 inline-flex items-center gap-2">
@@ -752,7 +820,7 @@ function Index() {
             <Reveal delay={0.08}>
               <a
                 href="tel:+918847654698"
-                className="group flex items-center justify-between gap-6 rounded-xl border border-border bg-card/40 backdrop-blur-sm p-8 hover:border-accent hover:bg-card transition"
+                className="group flex items-center justify-between gap-6 rounded-2xl glass gradient-border p-8 hover:bg-card transition"
               >
                 <div>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2 inline-flex items-center gap-2">
