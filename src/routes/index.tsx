@@ -270,26 +270,40 @@ function Index() {
       </div>
 
       {/* Nav */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/50 border-b border-border/40">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/40">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           <a href="#top" className="font-serif text-xl tracking-tight">
             Harkirat<span className="text-accent">.</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#work" className="hover:text-foreground transition">Work</a>
-            <a href="#about" className="hover:text-foreground transition">About</a>
-            <a href="#skills" className="hover:text-foreground transition">Skills</a>
-            <a href="#achievements" className="hover:text-foreground transition">Achievements</a>
-            <a href="#contact" className="hover:text-foreground transition">Contact</a>
+          <nav className="hidden md:flex items-center gap-1 text-sm text-muted-foreground glass rounded-full px-2 py-1.5">
+            {navLinks.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                className={`relative px-3 py-1.5 rounded-full transition-colors ${
+                  active === l.id ? "text-foreground" : "hover:text-foreground"
+                }`}
+              >
+                {active === l.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-accent/15 border border-accent/30"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="relative">{l.label}</span>
+              </a>
+            ))}
           </nav>
           <a
             href="mailto:hkkirat25@gmail.com"
-            className="text-xs font-mono uppercase tracking-widest border border-border px-3 py-1.5 rounded-full hover:bg-accent hover:text-background hover:border-accent transition"
+            className="relative text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full gradient-border bg-card/40 hover:bg-accent hover:text-background transition-colors"
           >
-            Let's talk
+            <span className="relative z-10">Let's talk</span>
           </a>
         </div>
       </header>
+
 
       {/* Hero */}
       <section id="top" className="relative pt-40 pb-24 px-6">
