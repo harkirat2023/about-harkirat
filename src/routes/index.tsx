@@ -84,7 +84,7 @@ const projects: Project[] = [
       "JWT auth and MongoDB for scalable multi-user data.",
       "Interactive dashboards surfacing real-time spending insights.",
     ],
-    span: "md:col-span-2 md:row-span-2",
+    span: "md:col-span-1",
     accent: "from-amber-400/25 to-rose-500/10",
   },
   {
@@ -101,7 +101,7 @@ const projects: Project[] = [
       "Real-time inventory, QR billing, auto invoices.",
       "Role-based auth across three panels.",
     ],
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     accent: "from-emerald-400/20 to-cyan-500/10",
   },
   {
@@ -118,10 +118,11 @@ const projects: Project[] = [
       "Flask REST APIs for real-time severity prediction.",
       "End-to-end pipeline with Pandas/NumPy/MongoDB.",
     ],
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     accent: "from-violet-400/20 to-indigo-500/10",
   },
 ];
+
 
 const skillCategories = [
   { key: "all", label: "All" },
