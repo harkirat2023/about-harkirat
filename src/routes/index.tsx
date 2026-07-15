@@ -84,7 +84,7 @@ const projects: Project[] = [
       "JWT auth and MongoDB for scalable multi-user data.",
       "Interactive dashboards surfacing real-time spending insights.",
     ],
-    span: "md:col-span-2 md:row-span-2",
+    span: "md:col-span-1",
     accent: "from-amber-400/25 to-rose-500/10",
   },
   {
@@ -101,7 +101,7 @@ const projects: Project[] = [
       "Real-time inventory, QR billing, auto invoices.",
       "Role-based auth across three panels.",
     ],
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     accent: "from-emerald-400/20 to-cyan-500/10",
   },
   {
@@ -118,55 +118,14 @@ const projects: Project[] = [
       "Flask REST APIs for real-time severity prediction.",
       "End-to-end pipeline with Pandas/NumPy/MongoDB.",
     ],
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     accent: "from-violet-400/20 to-indigo-500/10",
   },
 ];
 
-const skillCategories = [
-  { key: "all", label: "All" },
-  { key: "lang", label: "Languages" },
-  { key: "backend", label: "Backend" },
-  { key: "db", label: "Databases" },
-  { key: "ml", label: "ML / AI" },
-  { key: "devops", label: "DevOps" },
-] as const;
 
-type SkillKey = (typeof skillCategories)[number]["key"];
 
-const skills: { name: string; cat: Exclude<SkillKey, "all">; icon: typeof Code2 }[] = [
-  { name: "Java", cat: "lang", icon: Code2 },
-  { name: "Python", cat: "lang", icon: Code2 },
-  { name: "JavaScript", cat: "lang", icon: Code2 },
-  { name: "TypeScript", cat: "lang", icon: Code2 },
-  { name: "SQL", cat: "lang", icon: Code2 },
-  { name: "HTML5", cat: "lang", icon: Code2 },
-  { name: "CSS3", cat: "lang", icon: Code2 },
-  { name: "React.js", cat: "backend", icon: Server },
-  { name: "Node.js", cat: "backend", icon: Server },
-  { name: "Express.js", cat: "backend", icon: Server },
-  { name: "FastAPI", cat: "backend", icon: Server },
-  { name: "REST APIs", cat: "backend", icon: Server },
-  { name: "WebSockets", cat: "backend", icon: Server },
-  { name: "JWT / OAuth", cat: "backend", icon: Server },
-  { name: "PostgreSQL", cat: "db", icon: Database },
-  { name: "MongoDB", cat: "db", icon: Database },
-  { name: "MySQL", cat: "db", icon: Database },
-  { name: "Supabase", cat: "db", icon: Database },
-  { name: "Redis", cat: "db", icon: Database },
-  { name: "Scikit-learn", cat: "ml", icon: Brain },
-  { name: "TensorFlow", cat: "ml", icon: Brain },
-  { name: "NLP", cat: "ml", icon: Brain },
-  { name: "LLM Integrations", cat: "ml", icon: Sparkles },
-  { name: "GenAI", cat: "ml", icon: Sparkles },
-  { name: "Data Analysis", cat: "ml", icon: Brain },
-  { name: "Git / GitHub", cat: "devops", icon: Cloud },
-  { name: "GitHub Actions", cat: "devops", icon: Cloud },
-  { name: "Docker", cat: "devops", icon: Cloud },
-  { name: "Linux", cat: "devops", icon: Cloud },
-  { name: "Vercel", cat: "devops", icon: Cloud },
-  { name: "Postman", cat: "devops", icon: Cloud },
-];
+
 
 const experience = [
   {
@@ -569,7 +528,7 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-4 gap-5 [perspective:1200px]">
+          <div className="grid md:grid-cols-3 gap-5 [perspective:1200px]">
             {projects.map((p, idx) => (
               <Reveal key={p.n} delay={idx * 0.08} className={p.span}>
                 <TiltCard className="group relative h-full">
@@ -862,15 +821,117 @@ function ExperienceTimeline() {
   );
 }
 
-/* ---------------- Skills with filter tabs ---------------- */
+/* ---------------- Skills — innovative grouped constellation ---------------- */
+
+type SkillGroup = {
+  key: string;
+  label: string;
+  icon: typeof Code2;
+  blurb: string;
+  items: { name: string; level: number }[];
+  accent: string;
+};
+
+const skillGroups: SkillGroup[] = [
+  {
+    key: "lang",
+    label: "Languages",
+    icon: Code2,
+    blurb: "The alphabets I think in.",
+    accent: "from-amber-400/40 to-rose-500/10",
+    items: [
+      { name: "Python", level: 92 },
+      { name: "TypeScript", level: 85 },
+      { name: "JavaScript", level: 90 },
+      { name: "Java", level: 80 },
+      { name: "SQL", level: 82 },
+      { name: "HTML5 / CSS3", level: 90 },
+    ],
+  },
+  {
+    key: "backend",
+    label: "Backend & Web",
+    icon: Server,
+    blurb: "APIs, sockets, and the plumbing behind product.",
+    accent: "from-emerald-400/40 to-cyan-500/10",
+    items: [
+      { name: "Node.js", level: 88 },
+      { name: "Express.js", level: 85 },
+      { name: "FastAPI", level: 86 },
+      { name: "React.js", level: 90 },
+      { name: "REST APIs", level: 92 },
+      { name: "WebSockets", level: 78 },
+      { name: "JWT / OAuth", level: 82 },
+    ],
+  },
+  {
+    key: "db",
+    label: "Databases",
+    icon: Database,
+    blurb: "State, at rest and in motion.",
+    accent: "from-sky-400/40 to-indigo-500/10",
+    items: [
+      { name: "PostgreSQL", level: 85 },
+      { name: "MongoDB", level: 88 },
+      { name: "MySQL", level: 80 },
+      { name: "Supabase", level: 82 },
+      { name: "Redis", level: 72 },
+    ],
+  },
+  {
+    key: "ml",
+    label: "Machine Learning & AI",
+    icon: Brain,
+    blurb: "From feature engineering to LLM glue.",
+    accent: "from-violet-400/40 to-fuchsia-500/10",
+    items: [
+      { name: "Scikit-learn", level: 88 },
+      { name: "TensorFlow", level: 72 },
+      { name: "NLP", level: 82 },
+      { name: "LLM Integrations", level: 75 },
+      { name: "GenAI", level: 72 },
+      { name: "Data Analysis", level: 85 },
+    ],
+  },
+  {
+    key: "devops",
+    label: "DevOps & Tooling",
+    icon: Cloud,
+    blurb: "Ship it, monitor it, do it again.",
+    accent: "from-teal-400/40 to-blue-500/10",
+    items: [
+      { name: "Git / GitHub", level: 92 },
+      { name: "GitHub Actions", level: 80 },
+      { name: "Docker", level: 70 },
+      { name: "Linux", level: 75 },
+      { name: "Vercel", level: 88 },
+      { name: "Postman", level: 90 },
+    ],
+  },
+  {
+    key: "cs",
+    label: "Core CS",
+    icon: Layers,
+    blurb: "The fundamentals that outlast frameworks.",
+    accent: "from-rose-400/40 to-orange-500/10",
+    items: [
+      { name: "DSA", level: 88 },
+      { name: "OOP", level: 90 },
+      { name: "DBMS", level: 85 },
+      { name: "Operating Systems", level: 80 },
+      { name: "Computer Networks", level: 78 },
+    ],
+  },
+];
 
 function SkillsSection() {
-  const [filter, setFilter] = useState<SkillKey>("all");
-  const visible = filter === "all" ? skills : skills.filter((s) => s.cat === filter);
-
   return (
-    <section id="skills" className="px-6 py-32 border-t border-border bg-card/20">
-      <div className="mx-auto max-w-6xl">
+    <section id="skills" className="px-6 py-32 border-t border-border bg-card/20 relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-0 opacity-40">
+        <div className="absolute top-20 left-1/3 h-96 w-96 rounded-full bg-[radial-gradient(circle,oklch(0.82_0.14_75/0.08),transparent_60%)] blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 h-96 w-96 rounded-full bg-[radial-gradient(circle,oklch(0.6_0.18_260/0.08),transparent_60%)] blur-3xl" />
+      </div>
+      <div className="mx-auto max-w-6xl relative">
         <Reveal>
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground mb-4">
             (03) Toolkit
@@ -878,60 +939,95 @@ function SkillsSection() {
           <h2 className="font-serif text-5xl md:text-7xl tracking-tight mb-4">
             The <span className="italic">instruments</span> I play.
           </h2>
-          <p className="text-muted-foreground text-lg font-serif italic mb-10 max-w-xl">
-            A sharp, opinionated stack — chosen for fluency, not fashion.
+          <p className="text-muted-foreground text-lg font-serif italic mb-14 max-w-xl">
+            A sharp, opinionated stack — grouped by the problem it solves, calibrated by fluency.
           </p>
         </Reveal>
 
-        <Reveal delay={0.05}>
-          <div className="flex flex-wrap gap-1 p-1 rounded-full glass w-max mb-10">
-            {skillCategories.map((c) => (
-              <button
-                key={c.key}
-                onClick={() => setFilter(c.key)}
-                className={`relative px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest transition-colors ${
-                  filter === c.key ? "text-background" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {filter === c.key && (
-                  <motion.span
-                    layoutId="skill-tab"
-                    className="absolute inset-0 rounded-full bg-accent"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
-                <span className="relative">{c.label}</span>
-              </button>
-            ))}
-          </div>
-        </Reveal>
-
-        <motion.div layout className="flex flex-wrap gap-2">
-          <AnimatePresence mode="popLayout">
-            {visible.map((s) => {
-              const Icon = s.icon;
-              return (
-                <motion.span
-                  layout
-                  key={s.name}
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.85 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -2 }}
-                  className="inline-flex items-center gap-2 rounded-full glass gradient-border px-4 py-2 text-sm hover:border-accent/60 transition"
-                >
-                  <Icon className="h-3.5 w-3.5 text-accent" />
-                  <span className="font-mono">{s.name}</span>
-                </motion.span>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skillGroups.map((g, i) => (
+            <Reveal key={g.key} delay={i * 0.06}>
+              <SkillGroupCard group={g} />
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
+function SkillGroupCard({ group }: { group: SkillGroup }) {
+  const Icon = group.icon;
+  const [hovered, setHovered] = useState<string | null>(null);
+  const reduce = useReducedMotion();
+
+  return (
+    <motion.div
+      whileHover={reduce ? undefined : { y: -4 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative h-full rounded-2xl glass gradient-border p-6 overflow-hidden hover:border-accent/60 transition"
+    >
+      <div className={`pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br ${group.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+      <div className="relative flex items-center gap-3">
+        <div className="h-11 w-11 rounded-xl border border-border bg-background/60 flex items-center justify-center text-accent group-hover:rotate-6 transition-transform">
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="min-w-0">
+          <h3 className="font-serif text-xl leading-tight">{group.label}</h3>
+          <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+            {group.items.length} skills
+          </p>
+        </div>
+      </div>
+
+      <p className="relative mt-3 text-sm text-muted-foreground italic font-serif">
+        {group.blurb}
+      </p>
+
+      <ul className="relative mt-5 space-y-2.5">
+        {group.items.map((it) => {
+          const isHot = hovered === it.name;
+          return (
+            <li
+              key={it.name}
+              onMouseEnter={() => setHovered(it.name)}
+              onMouseLeave={() => setHovered(null)}
+              className="group/row"
+            >
+              <div className="flex items-baseline justify-between gap-3 mb-1">
+                <span className={`text-sm font-mono transition-colors ${isHot ? "text-accent" : "text-foreground/90"}`}>
+                  {it.name}
+                </span>
+                <span className="text-[10px] font-mono text-muted-foreground tabular-nums">
+                  {it.level.toString().padStart(2, "0")}
+                </span>
+              </div>
+              <div className="relative h-[3px] w-full rounded-full bg-border/60 overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${it.level}%` }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-accent via-accent to-accent-2"
+                />
+                {isHot && !reduce && (
+                  <motion.div
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "200%" }}
+                    transition={{ duration: 1.2, ease: "linear", repeat: Infinity }}
+                    className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/50 to-transparent"
+                  />
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </motion.div>
+  );
+}
+
 
 /* ---------------- Contact form ---------------- */
 
@@ -948,16 +1044,24 @@ function ContactForm() {
     e.preventDefault();
     if (!canSubmit || status !== "idle") return;
     setStatus("sending");
-    // simulate — no backend
-    await new Promise((r) => setTimeout(r, 1100));
+
+    const subject = `Portfolio message from ${name.trim()}`;
+    const body = `${msg.trim()}\n\n— ${name.trim()}\n${email.trim()}`;
+    const mailto = `mailto:hkkirat25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open the user's mail client with the message prefilled.
+    window.location.href = mailto;
+
+    await new Promise((r) => setTimeout(r, 600));
     setStatus("sent");
     setTimeout(() => {
       setStatus("idle");
       setName("");
       setEmail("");
       setMsg("");
-    }, 2400);
+    }, 2600);
   }
+
 
   return (
     <form onSubmit={onSubmit} className="rounded-2xl glass gradient-border p-6 md:p-8 space-y-5">
