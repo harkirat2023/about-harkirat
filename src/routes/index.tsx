@@ -1044,16 +1044,24 @@ function ContactForm() {
     e.preventDefault();
     if (!canSubmit || status !== "idle") return;
     setStatus("sending");
-    // simulate — no backend
-    await new Promise((r) => setTimeout(r, 1100));
+
+    const subject = `Portfolio message from ${name.trim()}`;
+    const body = `${msg.trim()}\n\n— ${name.trim()}\n${email.trim()}`;
+    const mailto = `mailto:hkkirat25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open the user's mail client with the message prefilled.
+    window.location.href = mailto;
+
+    await new Promise((r) => setTimeout(r, 600));
     setStatus("sent");
     setTimeout(() => {
       setStatus("idle");
       setName("");
       setEmail("");
       setMsg("");
-    }, 2400);
+    }, 2600);
   }
+
 
   return (
     <form onSubmit={onSubmit} className="rounded-2xl glass gradient-border p-6 md:p-8 space-y-5">
