@@ -124,50 +124,8 @@ const projects: Project[] = [
 ];
 
 
-const skillCategories = [
-  { key: "all", label: "All" },
-  { key: "lang", label: "Languages" },
-  { key: "backend", label: "Backend" },
-  { key: "db", label: "Databases" },
-  { key: "ml", label: "ML / AI" },
-  { key: "devops", label: "DevOps" },
-] as const;
 
-type SkillKey = (typeof skillCategories)[number]["key"];
 
-const skills: { name: string; cat: Exclude<SkillKey, "all">; icon: typeof Code2 }[] = [
-  { name: "Java", cat: "lang", icon: Code2 },
-  { name: "Python", cat: "lang", icon: Code2 },
-  { name: "JavaScript", cat: "lang", icon: Code2 },
-  { name: "TypeScript", cat: "lang", icon: Code2 },
-  { name: "SQL", cat: "lang", icon: Code2 },
-  { name: "HTML5", cat: "lang", icon: Code2 },
-  { name: "CSS3", cat: "lang", icon: Code2 },
-  { name: "React.js", cat: "backend", icon: Server },
-  { name: "Node.js", cat: "backend", icon: Server },
-  { name: "Express.js", cat: "backend", icon: Server },
-  { name: "FastAPI", cat: "backend", icon: Server },
-  { name: "REST APIs", cat: "backend", icon: Server },
-  { name: "WebSockets", cat: "backend", icon: Server },
-  { name: "JWT / OAuth", cat: "backend", icon: Server },
-  { name: "PostgreSQL", cat: "db", icon: Database },
-  { name: "MongoDB", cat: "db", icon: Database },
-  { name: "MySQL", cat: "db", icon: Database },
-  { name: "Supabase", cat: "db", icon: Database },
-  { name: "Redis", cat: "db", icon: Database },
-  { name: "Scikit-learn", cat: "ml", icon: Brain },
-  { name: "TensorFlow", cat: "ml", icon: Brain },
-  { name: "NLP", cat: "ml", icon: Brain },
-  { name: "LLM Integrations", cat: "ml", icon: Sparkles },
-  { name: "GenAI", cat: "ml", icon: Sparkles },
-  { name: "Data Analysis", cat: "ml", icon: Brain },
-  { name: "Git / GitHub", cat: "devops", icon: Cloud },
-  { name: "GitHub Actions", cat: "devops", icon: Cloud },
-  { name: "Docker", cat: "devops", icon: Cloud },
-  { name: "Linux", cat: "devops", icon: Cloud },
-  { name: "Vercel", cat: "devops", icon: Cloud },
-  { name: "Postman", cat: "devops", icon: Cloud },
-];
 
 const experience = [
   {
