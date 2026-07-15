@@ -570,7 +570,7 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-4 gap-5 [perspective:1200px]">
+          <div className="grid md:grid-cols-3 gap-5 [perspective:1200px]">
             {projects.map((p, idx) => (
               <Reveal key={p.n} delay={idx * 0.08} className={p.span}>
                 <TiltCard className="group relative h-full">
